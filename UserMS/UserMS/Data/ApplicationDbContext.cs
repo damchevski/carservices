@@ -23,10 +23,7 @@ namespace UserMS.Data
 
             builder.Entity<User>()
                 .Property(z => z.Id)
-                .ValueGeneratedOnAdd();
-
-            builder.Entity<UserCar>()
-                .HasKey(z => new { z.UserId, z.CarId});   
+                .ValueGeneratedOnAdd(); 
 
         }
     }

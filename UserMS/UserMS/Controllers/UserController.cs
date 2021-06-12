@@ -120,41 +120,7 @@ namespace UserMS.Controllers
             return true;
         }
 
-        [HttpPost("addcar")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> AddCar([FromQuery] int CarId)
-        {
-            var result = await this.VerifyToken(User
-                .Claims
-                .SingleOrDefault().Value);
-
-            if (!result)
-            {
-                return BadRequest("Not authorized");
-            }
-
-            if(CarId.Equals("") || CarId == null)
-            {
-                return BadRequest("Car Id Required");
-            }
-
-            var full = User
-                .Claims
-                .SingleOrDefault();
-
-            var username = full.Value.Split(",")[0];
-
-            var dbUser = await _context
-               .Users
-               .SingleOrDefaultAsync(u => u.Username == username);
-
-            UserCar forAdd = new UserCar() { UserId = dbUser.Id, CarId = CarId };
-
-            _context.Add(forAdd);
-            _context.SaveChanges();
-
-            return Ok(forAdd);
-        }
+ 
 
         private string Encrypt_Password(string password)
         {

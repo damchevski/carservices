@@ -41,19 +41,6 @@ namespace UserMS.Migrations
 
                     b.ToTable("Users");
                 });
-
-            modelBuilder.Entity("UserMS.Data.UserCar", b =>
-                {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "CarId");
-
-                    b.ToTable("UserCar");
-                });
 #pragma warning restore 612, 618
         }
     }
