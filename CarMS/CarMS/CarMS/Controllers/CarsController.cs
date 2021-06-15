@@ -98,6 +98,7 @@ namespace CarMS.Controllers
 
             Car car = this._context.Cars.Where(x => x.Id == id).FirstOrDefault();
             this._context.Remove(car);
+            this._context.SaveChanges();
 
             return true;
         }
