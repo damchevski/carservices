@@ -59,10 +59,11 @@ namespace ServiceMS.Controllers
 
 
             HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("Authorization", Request.Headers["Authorization"].ToString());
 
             foreach (var item in service.ServiceItemsIds)
             {
-                string URI = "https://localhost:44385/api/serviceitems/" + item;
+                string URI = "https://localhost:5003/api/serviceitems/" + item;
 
                 HttpResponseMessage responseMessage = await client.GetAsync(URI);
 
@@ -72,11 +73,14 @@ namespace ServiceMS.Controllers
                 totalPrice += result.Price;
             }
 
-            string URI1 = "https://localhost:44385/api/cars/" + service.CarId;
+            string URI1 = "https://localhost:5002/api/cars/" + service.CarId;
 
             HttpResponseMessage responseMessage1 = await client.GetAsync(URI1);
 
             Car car = responseMessage1.Content.ReadAsAsync<Car>().Result;
+
+            if (car == null)
+                throw new Exception("Car not exsist/this user dont have this car.");
 
             Service newService = new Service()
             {
@@ -104,7 +108,7 @@ namespace ServiceMS.Controllers
             return newService;
         }
 
-        [HttpGet]
+        [HttpGet("AllItemsForService")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<List<ServiceServiceItem>> GetAllItemsForService([FromQuery] int serviceId)
         {
@@ -115,8 +119,10 @@ namespace ServiceMS.Controllers
             if (serviceId == null)
                 throw new Exception("All fields required");
 
-            return this._context.ServiceServiceItems
+            var res = this._context.ServiceServiceItems
                 .Where(x => x.ServiceId == serviceId).ToList();
+
+            return res;
         }
 
         // DELETE api/<ServicesController>/5
@@ -136,10 +142,16 @@ namespace ServiceMS.Controllers
                 throw new Exception("You are not Admin");
 
             Service service = this._context.Services.Where(x => x.Id == id).FirstOrDefault();
+
+            if (service == null)
+                throw new Exception("Service not exsist");
+
             this._context.Remove(service);
             this._context.SaveChanges();
 
-            foreach(var item in this._context.ServiceServiceItems.Where(x=>x.ServiceId == service.Id))
+            var allitems = this._context.ServiceServiceItems.Where(x => x.ServiceId == service.Id).ToList();
+
+            foreach (var item in allitems)
             {
                 this._context.Remove(item);
                 this._context.SaveChanges();
@@ -157,7 +169,7 @@ namespace ServiceMS.Controllers
         {
             HttpClient client = new HttpClient();
 
-            string URI = "https://localhost:44311/api/User/Verify";
+            string URI = "https://localhost:5001/api/User/Verify";
             client.DefaultRequestHeaders.Add("Authorization", Token);
 
             HttpResponseMessage responseMessage = client.GetAsync(URI).Result;

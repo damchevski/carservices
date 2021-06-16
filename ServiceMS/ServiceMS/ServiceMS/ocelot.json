@@ -1,0 +1,21 @@
+﻿{
+  "ReRoutes": [
+    {
+      "UserServiceDiscovery": true,
+      "DownstreamPathTemplate": "/api/service/{anything}",
+      "DownstreamScheme": "http",
+      "ServiceName": "userMS",
+      "UpstreamPathTemplate": "/api/gateway/service/{anything}",
+      "UpstreamHttpMethod": [ "Get", "Post","Delete" ],
+      "ReRoutesCaseSensitive": false
+    }
+
+  ],
+  "GlobalConfiguration": {
+    "ServiceDiscoveryProvider": {
+      "Host": "localhost",
+      "Port": 8500,
+      "Type": "Consul"
+    }
+  }
+}

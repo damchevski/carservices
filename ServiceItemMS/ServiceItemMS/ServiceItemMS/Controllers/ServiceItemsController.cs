@@ -112,7 +112,7 @@ namespace ServiceItemMS.Controllers
             {
                 HttpClient client = new HttpClient();
 
-                string URI = "https://localhost:44311/api/User/Verify";
+                string URI = "https://localhost:5001/api/User/Verify";
                 client.DefaultRequestHeaders.Add("Authorization", Token);
 
                 HttpResponseMessage responseMessage = client.GetAsync(URI).Result;

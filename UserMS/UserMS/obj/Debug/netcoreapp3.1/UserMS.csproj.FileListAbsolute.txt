@@ -59,3 +59,14 @@ E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PRO
 E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\obj\Debug\netcoreapp3.1\UserMS.pdb
 E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\obj\Debug\netcoreapp3.1\UserMS.genruntimeconfig.cache
 E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\ocelot.json
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Consul.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\FluentValidation.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DiagnosticAdapter.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Ocelot.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\bin\Debug\netcoreapp3.1\Ocelot.Provider.Consul.dll
+E:\папка\финки\6 семестар\servisno orientirani arhitekturi\PROEKT\carservices\UserMS\UserMS\obj\Debug\netcoreapp3.1\UserMS.MvcApplicationPartsAssemblyInfo.cs

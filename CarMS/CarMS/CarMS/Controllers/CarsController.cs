@@ -44,8 +44,17 @@ namespace CarMS.Controllers
             if (!auth)
                 throw new Exception("Fail authentication");
 
-            return this._context.Cars.Where(x => x.Id == id).FirstOrDefault();   
+            var username = User.Claims.SingleOrDefault().Value.Split(",")[0];
+
+            var res = this._context.UserCars.Where(x => x.Username.Equals( username) && x.CarId == id);
+
+
+            if (res != null)
+                return this._context.Cars.Where(x => x.Id == id).FirstOrDefault();
+
+            return null;
         }
+
 
         // POST api/<CarsController>
         [HttpPost]
@@ -100,6 +109,14 @@ namespace CarMS.Controllers
             this._context.Remove(car);
             this._context.SaveChanges();
 
+            foreach (var item in this._context.UserCars)
+            {
+                if (item.CarId == car.Id)
+                {
+                    this._context.Remove(item);
+                    this._context.SaveChanges();
+                }
+            }
             return true;
         }
 
@@ -139,7 +156,7 @@ namespace CarMS.Controllers
         {
             HttpClient client = new HttpClient();
 
-            string URI = "https://localhost:44311/api/User/Verify";
+            string URI = "https://localhost:5001/api/User/Verify";
             client.DefaultRequestHeaders.Add("Authorization",Token);
 
             HttpResponseMessage responseMessage = client.GetAsync(URI).Result;
